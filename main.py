@@ -1,15 +1,13 @@
 import telebot
 from config import *
+from random import randint
 
 bot = telebot.TeleBot('5009176955:AAGDFHzueY32XbNs0dffKDF8z539jM7C0Ek')
 
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    # if message.from_user.id == misha_id:
-    #     img = open('data/cock.jpg', 'rb')
-    #     bot.send_message(message.chat.id, 'misha')
-    #     bot.send_photo(message.chat.id, img)
+    random_number = randint(0, 100)
     if 'английский' in message.text.lower():
         img = open('data/cock.jpg', 'rb')
         bot.send_photo(message.chat.id, img)
@@ -39,6 +37,19 @@ def get_text_messages(message):
     elif 'ццц' in message.text.lower():
         img = open('data/shutup.jpg', 'rb')
         bot.send_photo(message.chat.id, img, caption='Без негатива')
+
+    if random_number == 0:
+        anim = open('data/timurgif1.gif', 'rb')
+        bot.send_animation(message.chat.id, anim)
+    elif random_number == 1:
+        anim = open('data/timurgif2.gif', 'rb')
+        bot.send_animation(message.chat.id, anim)
+    elif random_number == 2:
+        anim = open('data/okniggaand.gif', 'rb')
+        bot.send_animation(message.chat.id, anim)
+    elif random_number == 3:
+        anim = open('data/literallyme.gif', 'rb')
+        bot.send_animation(message.chat.id, anim)
 
 
 bot.polling(none_stop=True, interval=0)
